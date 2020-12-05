@@ -42,3 +42,11 @@ class ProductPage(BasePage):
     def should_be_product_price_in_info_message(self):
         assert self.is_element_present(*ProductPageLocators.PRICE_IN_INFO_MESSAGE), \
             "Product price in info message is not presented"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def check_is_success_message_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is not disappeared"
