@@ -3,11 +3,12 @@ from .locators import ProductPageLocators
 
 
 class ProductPage(BasePage):
-    def add_product_to_basket(self):
+    def add_product_to_basket(self, with_quiz=False):
         self.should_be_add_to_basket_button()
         add_to_basket_button = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON)
         add_to_basket_button.click()
-        self.solve_quiz_and_get_code()
+        if with_quiz:
+            self.solve_quiz_and_get_code()
 
     def check_product_title_in_added_message(self):
         self.should_be_product_title()

@@ -5,7 +5,7 @@ from .pages.basket_page import BasketPage
 from .pages.login_page import LoginPage
 
 
-DEFAULT_PRODUCT_LINK = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+DEFAULT_PRODUCT_LINK = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
 LOGIN_LINK = "http://selenium1py.pythonanywhere.com/accounts/login/"
 
 
@@ -27,7 +27,8 @@ LOGIN_LINK = "http://selenium1py.pythonanywhere.com/accounts/login/"
 def test_guest_can_add_product_to_basket(browser, link):
     page = ProductPage(browser, link)
     page.open()
-    page.add_product_to_basket()
+    with_quiz_alert = "promo=offer" in browser.current_url
+    page.add_product_to_basket(with_quiz=with_quiz_alert)
     page.check_product_title_in_added_message()
     page.check_product_price_in_info_message()
 
