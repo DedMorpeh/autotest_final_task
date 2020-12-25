@@ -9,6 +9,7 @@ DEFAULT_PRODUCT_LINK = "http://selenium1py.pythonanywhere.com/catalogue/coders-a
 LOGIN_LINK = "http://selenium1py.pythonanywhere.com/accounts/login/"
 
 
+@pytest.mark.need_review
 @pytest.mark.parametrize('link', [
     "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0",
     "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer1",
@@ -59,6 +60,7 @@ def test_guest_should_see_login_link_on_product_page(browser):
     page.should_be_login_link()
 
 
+@pytest.mark.need_review
 def test_guest_can_go_to_login_page_from_product_page(browser):
     page = ProductPage(browser, DEFAULT_PRODUCT_LINK)
     page.open()
@@ -66,6 +68,7 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page.go_to_login_page()
 
 
+@pytest.mark.need_review
 def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     page = ProductPage(browser, DEFAULT_PRODUCT_LINK)
     page.open()
@@ -86,6 +89,7 @@ class TestUserAddToBasketFromProductPage():
         login_page.register_new_user(user_email, user_password)
         login_page.should_be_authorized_user()
 
+    @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
         page = ProductPage(browser, DEFAULT_PRODUCT_LINK)
         page.open()
